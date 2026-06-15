@@ -59,7 +59,12 @@
 html{font-size:16px;scroll-behavior:smooth}
 body{
   font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Pretendard',sans-serif;
-  background:var(--canvas);color:var(--ink);
+  background-image: url('background_summer.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color:var(--ink);
   min-height:100vh;max-width:430px;margin:0 auto;
   padding-bottom:120px;
 }
@@ -107,7 +112,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 
 /* CALORIE BAR — Apple store-utility-card style */
 .cal-bar-wrap{padding:0 20px 16px}
-.cal-bar-card{background:var(--parchment);border-radius:var(--r);padding:14px 16px;border:1px solid var(--hairline)}
+.cal-bar-card{background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:var(--r);padding:14px 16px;border:1px solid var(--hairline);box-shadow:var(--shadow-lg);}
 .cal-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
 .cal-bar-label{font-size:12px;font-weight:400;color:var(--text3);letter-spacing:-0.12px}
 .cal-bar-nums{display:flex;align-items:baseline;gap:3px}
@@ -130,10 +135,10 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .friday-item .todo-badge{background:rgba(0,102,204,0.08) !important;color:var(--action) !important}
 
 /* TODO CARD */
-.todo-card{margin:0 16px;background:var(--canvas);border:1px solid var(--hairline);border-radius:32px;overflow:visible}
+.todo-card{margin:0 16px;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--hairline);border-radius:var(--r);overflow:visible;box-shadow:var(--shadow-lg);}
 
 /* TIME TABS — pill */
-.time-tabs-wrap{padding:10px 12px;border-bottom:1px solid var(--divider);background:var(--canvas);border-radius:32px 32px 0 0;position:sticky;top:0;z-index:20;transition:box-shadow .2s}
+.time-tabs-wrap{padding:10px 12px;border-bottom:1px solid var(--divider);background:var(--canvas);border-radius:var(--r) var(--r) 0 0;position:sticky;top:0;z-index:20;transition:box-shadow .2s}
 .time-tabs-wrap.stuck{box-shadow:0 1px 0 var(--hairline)}
 .time-tabs{display:flex;gap:4px;background:var(--parchment);border-radius:99px;padding:3px}
 .time-tab{flex:1;padding:7px 0;font-size:12px;font-weight:400;color:var(--text3);background:none;border:none;cursor:pointer;font-family:inherit;border-radius:99px;transition:var(--tr);white-space:nowrap;letter-spacing:-0.12px}
@@ -179,12 +184,13 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .todo-actions{display:flex;flex-direction:row;align-items:center;gap:0;flex-shrink:0;margin-left:4px}
 .act-btn{width:28px;height:28px;border-radius:50%;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text4);transition:var(--tr);padding:0;flex-shrink:0}
 .act-btn:hover{background:var(--parchment);color:var(--text3)}
-.act-btn:active{transform:scale(0.90)}
-.card-add-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 16px;background:none;border:none;border-top:1px solid var(--divider);color:var(--action);font-size:14px;font-weight:400;cursor:pointer;width:100%;font-family:inherit;transition:var(--tr);border-radius:0 0 32px 32px;letter-spacing:-0.224px}
+.act-btn:active{transform:scale(0.95)}
+.card-add-btn:active{transform:scale(0.95)}
+.card-add-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 16px;background:none;border:none;border-top:1px solid var(--divider);color:var(--action);font-size:14px;font-weight:400;cursor:pointer;width:100%;font-family:inherit;transition:var(--tr);border-radius:0 0 var(--r) var(--r);letter-spacing:-0.224px}
 .card-add-btn:hover{background:var(--parchment)}
 
 /* CALENDAR */
-.cal-section{margin:16px 16px 0;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r);overflow:hidden}
+.cal-section{margin:16px 16px 0;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--hairline);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-lg);}
 .cal-header{padding:14px 16px 0}
 .cal-month-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .cal-month-trigger{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;transition:var(--tr);border-radius:10px;padding:2px 4px}
@@ -216,7 +222,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .report-fab{position:fixed;bottom:28px;right:calc(50% - 215px + 20px);width:46px;height:46px;border-radius:50%;background:var(--action);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:50;transition:var(--tr)}
 .report-fab:hover{transform:scale(1.08)}
 .report-fab:focus{outline:3px solid var(--c4);outline-offset:2px}
-.report-fab:active{transform:scale(0.94)}
+.report-fab:active{transform:scale(0.95)}
 @media(max-width:430px){.report-fab{right:20px}}
 
 /* CONFETTI */
@@ -230,14 +236,14 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .success-bubble .s-text{font-size:18px;font-weight:700;color:var(--text)}
 
 /* ── COMMON BOTTOM SHEET ── */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.46);z-index:200;align-items:flex-end;justify-content:center}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.24);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);z-index:200;align-items:flex-end;justify-content:center}
 .overlay.open{display:flex;animation:overlayIn .18s ease}
 @keyframes overlayIn{from{opacity:0}to{opacity:1}}
 @keyframes sheetIn{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
 
 /* Sheet base */
 .sheet-wrap{
-  background:#fff;border-radius:22px 22px 0 0;
+  background:#fff;border-radius:var(--r) var(--r) 0 0;
   width:100%;max-width:430px;
   max-height:80vh;
   display:flex;flex-direction:column;
@@ -273,7 +279,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .time-select:hover{border-color:var(--text3)}
 .sheet-btn{width:100%;padding:14px;background:var(--action);color:#fff;border:none;border-radius:99px;font-size:17px;font-weight:300;font-family:inherit;cursor:pointer;transition:var(--tr);letter-spacing:0}
 .sheet-btn:hover{opacity:0.88}
-.sheet-btn:active{transform:scale(0.98)}
+.sheet-btn:active{transform:scale(0.95)}
 .sheet-btn.secondary{background:var(--parchment);color:var(--ink);border:1px solid var(--hairline)}
 .sheet-btn.secondary:hover{background:var(--bg3);border-color:var(--chip)}
 .sheet-btn+.sheet-btn{margin-top:8px}
@@ -360,11 +366,109 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;font-size:14px;font-weight:400;padding:10px 20px;border-radius:99px;z-index:400;transition:transform .28s cubic-bezier(0.4,0,0.2,1);white-space:nowrap;font-family:inherit;letter-spacing:-0.224px}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .empty-state{text-align:center;padding:28px 20px;color:var(--text3);font-size:13px;line-height:1.9}
+
+/* ── THREE HEADER OPTIONS STYLING ── */
+.header-switcher {
+  margin: 10px 16px 4px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 99px;
+  padding: 2px;
+  display: flex;
+  gap: 2px;
+  border: 1px solid var(--hairline);
+  z-index: 100;
+  position: relative;
+}
+.switcher-btn {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text3);
+  padding: 6px 0;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: var(--tr);
+  font-family: inherit;
+}
+.switcher-btn.active {
+  background: var(--action);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+/* Option 1: Frosted Glass Capsule Badge + Mini Icon */
+.page-header.hdr-opt-1 {
+  margin: 16px 16px 12px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--r);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+}
+.page-header.hdr-opt-1 .date-big {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Mini surf icon injection rule */
+.page-header.hdr-opt-1 .date-big::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('surf_girl.png');
+  background-size: cover;
+  border-radius: 6px;
+  border: 1px solid var(--hairline);
+}
+
+/* Option 2: Trendy Typography Only (Transparent & Action Blue) */
+.page-header.hdr-opt-2 {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 24px 20px 14px;
+}
+.page-header.hdr-opt-2 .date-big {
+  color: var(--action);
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.6);
+}
+
+/* Option 3: Premium Gradient Fade Overlay */
+.page-header.hdr-opt-3 {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 28px 20px 20px;
+  border: none;
+  box-shadow: none;
+}
+.page-header.hdr-opt-3 .date-big {
+  font-size: 26px;
+  color: var(--ink);
+}
+
 </style>
 </head>
 <body>
 
-<div class="page-header">
+
+
+
+<div class="page-header hdr-opt-1" id="main-page-header">
   <div>
     <div class="date-eye" id="hdr-eye"></div>
     <div class="date-big" id="hdr-date"></div>
@@ -1495,6 +1599,9 @@ renderCalHeader();
   const done=items.filter(i=>checks[i.id]).length;
   if(items.length&&done===items.length)wasComplete=true;
 })();
+
+
+
 </script>
 </body>
 </html>
