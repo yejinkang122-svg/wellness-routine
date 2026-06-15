@@ -69,17 +69,19 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 /* HEADER — Apple SF Pro Display style */
 
 .page-header {
-  margin: 16px 16px 12px;
+  margin: 16px 16px 0;
   padding: 14px 16px;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: var(--r);
-  border: 1px solid var(--hairline);
+  border-radius: 32px;
+  border: 1px solid rgba(255,255,255,0.5);
   box-shadow: var(--shadow-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 100;
 }
 .page-header .date-big {
   font-size: 22px;
@@ -107,7 +109,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .weight-chip:active{transform:scale(0.95)}
 .wc-val{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-0.374px}
 .wc-unit{font-size:11px;color:var(--text3);font-weight:400}
-.dtype-dropdown-wrap{position:relative;z-index:30}
+.dtype-dropdown-wrap{position:relative;z-index:200}
 /* Apple button-dark-utility style for dtype chip */
 .dtype-chip{display:flex;align-items:center;gap:5px;background:var(--parchment);border:1px solid var(--hairline);border-radius:99px;padding:5px 10px 5px 12px;cursor:pointer;font-size:12px;font-weight:400;color:var(--text2);font-family:inherit;transition:var(--tr);letter-spacing:-0.224px}
 .dtype-chip:hover,.dtype-chip:focus{background:var(--bg3);outline:none}
@@ -125,19 +127,23 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .dtype-item.selected .dtype-check{opacity:1}
 
 /* PROGRESS RING */
-.progress-row{display:flex;align-items:center;gap:16px;padding:0 20px 14px}
-.ring-wrap{position:relative;width:60px;height:60px;flex-shrink:0}
-.ring-svg{transform:rotate(-90deg);width:60px;height:60px}
-.ring-bg{fill:none;stroke:var(--hairline);stroke-width:5}
-.ring-fill{fill:none;stroke:var(--action);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(0.4,0,0.2,1)}
-.ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--ink);letter-spacing:-0.374px}
+
+/* HEADER RING in page-header */
+.header-progress-divider{height:1px;background:rgba(0,0,0,0.08);margin:10px 0 8px}
+.progress-row{display:flex;align-items:center;gap:14px;padding:0}
+.ring-wrap{position:relative;width:48px;height:48px;flex-shrink:0}
+.ring-svg{transform:rotate(-90deg);width:48px;height:48px}
+.ring-bg{fill:none;stroke:rgba(0,0,0,0.10);stroke-width:4}
+.ring-fill{fill:none;stroke:var(--action);stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset .6s cubic-bezier(0.4,0,0.2,1)}
+.ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--ink)}
 .progress-meta{flex:1}
-.progress-title{font-size:12px;font-weight:400;color:var(--text3);margin-bottom:2px;letter-spacing:-0.12px}
-.progress-sub{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-0.374px}
+.progress-title{font-size:11px;font-weight:400;color:var(--text3);margin-bottom:1px;letter-spacing:-0.12px}
+.progress-sub{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:-0.374px}
+
 
 /* CALORIE BAR — Apple store-utility-card style */
 .cal-bar-wrap{padding:0 20px 16px}
-.cal-bar-card{background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:var(--r);padding:14px 16px;border:1px solid var(--hairline);box-shadow:var(--shadow-lg);}
+.cal-bar-card{background:rgba(255,255,255,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:32px;padding:14px 16px;border:1px solid rgba(255,255,255,0.5);box-shadow:var(--shadow-lg);}
 .cal-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
 .cal-bar-label{font-size:12px;font-weight:400;color:var(--text3);letter-spacing:-0.12px}
 .cal-bar-nums{display:flex;align-items:baseline;gap:3px}
@@ -160,10 +166,10 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .friday-item .todo-badge{background:rgba(0,102,204,0.08) !important;color:var(--action) !important}
 
 /* TODO CARD */
-.todo-card{margin:0 16px;background:var(--canvas);border:1px solid var(--hairline);border-radius:32px;overflow:visible}
+.todo-card{margin:16px 16px 0;background:rgba(255,255,255,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.5);border-radius:32px;overflow:visible;box-shadow:var(--shadow-lg);}
 
 /* TIME TABS — pill */
-.time-tabs-wrap{padding:10px 12px;border-bottom:1px solid var(--divider);background:var(--canvas);border-radius:32px 32px 0 0;position:sticky;top:0;z-index:20;transition:box-shadow .2s}
+.time-tabs-wrap{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:32px 32px 0 0;position:sticky;top:0;z-index:20;transition:box-shadow .2s}
 .time-tabs-wrap.stuck{box-shadow:0 1px 0 var(--hairline)}
 .time-tabs{display:flex;gap:4px;background:var(--parchment);border-radius:99px;padding:3px}
 .time-tab{flex:1;padding:7px 0;font-size:12px;font-weight:400;color:var(--text3);background:none;border:none;cursor:pointer;font-family:inherit;border-radius:99px;transition:var(--tr);white-space:nowrap;letter-spacing:-0.12px}
@@ -214,7 +220,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .card-add-btn:hover{background:var(--parchment)}
 
 /* CALENDAR */
-.cal-section{margin:16px 16px 0;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--hairline);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-lg);}
+.cal-section{margin:16px 16px 0;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.5);border-radius:32px;overflow:hidden;box-shadow:var(--shadow-lg);}
 .cal-header{padding:14px 16px 0}
 .cal-month-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .cal-month-trigger{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;transition:var(--tr);border-radius:10px;padding:2px 4px}
@@ -360,9 +366,9 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .rpt-goal-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
 .rpt-goal-title{font-size:14px;font-weight:600;color:var(--text)}
 .rpt-goal-sub{font-size:12px;color:var(--text3);margin-top:2px}
-.rpt-goal-pct{font-size:24px;font-weight:700;color:var(--c4)}
+.rpt-goal-pct{font-size:24px;font-weight:700;color:var(--action)}
 .goal-track{height:6px;background:var(--bg3);border-radius:99px;overflow:hidden;margin-bottom:6px}
-.goal-fill{height:100%;background:var(--c4);border-radius:99px;transition:width .5s cubic-bezier(0.4,0,0.2,1)}
+.goal-fill{height:100%;background:var(--action);border-radius:99px;transition:width .5s cubic-bezier(0.4,0,0.2,1)}
 .goal-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text3)}
 .streak-row{display:flex;gap:0}
 .streak-item{flex:1;text-align:center;padding:4px 0}
@@ -377,7 +383,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .stat-lbl{font-size:11px;color:var(--text3);font-weight:500}
 .week-bars{display:flex;gap:4px;align-items:flex-end}
 .wbar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
-.wbar-pct{font-size:9px;color:var(--text3);font-weight:500;height:12px;display:flex;align-items:flex-end}
+.wbar-pct{font-size:9px;color:var(--action);font-weight:600;height:12px;display:flex;align-items:flex-end}
 .wbar-track{width:100%;height:52px;background:var(--bg3);border-radius:5px 5px 3px 3px;position:relative;overflow:hidden}
 .wbar-fill{position:absolute;bottom:0;width:100%;border-radius:5px 5px 3px 3px;transition:height .5s cubic-bezier(0.4,0,0.2,1)}
 .wbar-name{font-size:10px;color:var(--text3);font-weight:500}
@@ -387,6 +393,24 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .diff-down{color:#2d7a4f;font-size:11px;font-weight:500;margin-left:4px}
 .diff-up{color:#c0392b;font-size:11px;font-weight:500;margin-left:4px}
 
+
+/* EDGE TOUCH ZONES */
+.edge-zone{position:fixed;top:0;bottom:0;width:8px;z-index:10;cursor:pointer}
+.edge-zone-left{left:0}
+.edge-zone-right{right:0}
+@media(min-width:430px){
+  .edge-zone-left{left:calc(50% - 215px)}
+  .edge-zone-right{right:calc(50% - 215px)}
+}
+.edge-flash{position:fixed;top:0;bottom:0;width:40px;z-index:9;pointer-events:none;opacity:0;transition:opacity .15s}
+.edge-flash-left{left:0;background:linear-gradient(to right,rgba(255,85,0,0.18),transparent)}
+.edge-flash-right{right:0;background:linear-gradient(to left,rgba(255,85,0,0.18),transparent)}
+@media(min-width:430px){
+  .edge-flash-left{left:calc(50% - 215px)}
+  .edge-flash-right{right:calc(50% - 215px)}
+}
+.edge-flash.show{opacity:1}
+
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;font-size:14px;font-weight:400;padding:10px 20px;border-radius:99px;z-index:400;transition:transform .28s cubic-bezier(0.4,0,0.2,1);white-space:nowrap;font-family:inherit;letter-spacing:-0.224px}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .empty-state{text-align:center;padding:28px 20px;color:var(--text3);font-size:13px;line-height:1.9}
@@ -395,40 +419,48 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 <body>
 
 <div class="page-header">
-  <div>
-    <div class="date-eye" id="hdr-eye"></div>
-    <div class="date-big" id="hdr-date"></div>
-  </div>
-  <div class="header-right">
-    <div class="weight-chip" onclick="openWeightSheet()" tabindex="0" onkeydown="if(event.key==='Enter')openWeightSheet()">
-      <span class="wc-val" id="wt-display">--</span><span class="wc-unit">kg</span>
-    </div>
-    <div class="dtype-dropdown-wrap">
-      <button class="dtype-chip" id="dtype-chip" onclick="toggleDropdown()">
-        <span id="dtype-label">출근 + 헬스</span>
-        <svg width="10" height="7" viewBox="0 0 10 7" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </button>
-      <div class="dtype-menu" id="dtype-menu">
-        <div class="dtype-item" data-type="office" onclick="selectDayType('office')">출근 + 헬스<span class="dtype-check">✓</span></div>
-        <div class="dtype-item" data-type="wfh" onclick="selectDayType('wfh')">재택 근무<span class="dtype-check">✓</span></div>
-        <div class="dtype-item" data-type="weekend" onclick="selectDayType('weekend')">주말<span class="dtype-check">✓</span></div>
-        <div class="dtype-item" data-type="holiday" onclick="selectDayType('holiday')">휴일<span class="dtype-check">✓</span></div>
+  <!-- 상단: 날짜 + 체중 + 템플릿 -->
+  <div style="width:100%">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0">
+      <div>
+        <div class="date-eye" id="hdr-eye"></div>
+        <div class="date-big" id="hdr-date"></div>
+      </div>
+      <div class="header-right">
+        <div class="weight-chip" onclick="openWeightSheet()" tabindex="0" onkeydown="if(event.key==='Enter')openWeightSheet()">
+          <span class="wc-val" id="wt-display">--</span><span class="wc-unit">kg</span>
+        </div>
+        <div class="dtype-dropdown-wrap">
+          <button class="dtype-chip" id="dtype-chip" onclick="toggleDropdown()">
+            <span id="dtype-label">출근 + 헬스</span>
+            <svg width="10" height="7" viewBox="0 0 10 7" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="dtype-menu" id="dtype-menu">
+            <div class="dtype-item" data-type="office" onclick="selectDayType('office')">출근 + 헬스<span class="dtype-check">✓</span></div>
+            <div class="dtype-item" data-type="wfh" onclick="selectDayType('wfh')">재택 근무<span class="dtype-check">✓</span></div>
+            <div class="dtype-item" data-type="weekend" onclick="selectDayType('weekend')">주말<span class="dtype-check">✓</span></div>
+            <div class="dtype-item" data-type="holiday" onclick="selectDayType('holiday')">휴일<span class="dtype-check">✓</span></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="progress-row">
-  <div class="ring-wrap">
-    <svg class="ring-svg" viewBox="0 0 60 60">
-      <circle class="ring-bg" cx="30" cy="30" r="25"/>
-      <circle class="ring-fill" id="ring-fill" cx="30" cy="30" r="25" stroke-dasharray="157" stroke-dashoffset="157"/>
-    </svg>
-    <div class="ring-label" id="ring-label">0%</div>
-  </div>
-  <div class="progress-meta">
-    <div class="progress-title">달성률</div>
-    <div class="progress-sub" id="progress-sub">시작 전</div>
+    <!-- 구분선 -->
+    <div class="header-progress-divider"></div>
+    <!-- 하단: 달성률 링 -->
+    <div class="progress-row">
+      <div class="ring-wrap">
+        <svg class="ring-svg" viewBox="0 0 48 48">
+          <circle class="ring-bg" cx="24" cy="24" r="22"/>
+          <circle class="ring-fill" id="ring-fill" cx="24" cy="24" r="22"
+            stroke-dasharray="138.2" stroke-dashoffset="138.2"/>
+        </svg>
+        <div class="ring-label" id="ring-label">0%</div>
+      </div>
+      <div class="progress-meta">
+        <div class="progress-title">달성률</div>
+        <div class="progress-sub" id="progress-sub">시작 전</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -821,8 +853,8 @@ function effDtype(){
 function getItems(dk,dtype){
   if(dayDiff(dk)>0){
     const d=JSON.parse(JSON.stringify(DEFAULT_ITEMS[dtype]||DEFAULT_ITEMS.office));
-    const dow=new Date(dk.split('-').map(Number).reduce((acc,v,i)=>i===0?new Date(v,0,1):acc,null)||dk).getDay();
-    return applyFridayOverride(d, new Date(dk.split('-')[0],dk.split('-')[1]-1,dk.split('-')[2]).getDay());
+    const dow=new Date(parseInt(dk.split('-')[0]),parseInt(dk.split('-')[1])-1,parseInt(dk.split('-')[2])).getDay();
+    return applyFridayOverride(d, dow);
   }
   const s=ls('items_'+dk,null);if(s)return s;
   const d=JSON.parse(JSON.stringify(DEFAULT_ITEMS[dtype]||DEFAULT_ITEMS.office));
@@ -925,7 +957,7 @@ document.addEventListener('click',e=>{
 
 /* ── RING + COMPLETION ── */
 function updateRing(pct){
-  const circ=2*Math.PI*25;
+  const circ=2*Math.PI*22;
   document.getElementById('ring-fill').style.strokeDashoffset=circ-(pct/100)*circ;
   document.getElementById('ring-label').textContent=pct+'%';
   let sub='시작 전';
@@ -957,11 +989,11 @@ function updateCalorieBar(items, checks){
   const over = total > KCAL_GOAL;
   const cur = document.getElementById('cal-current');
   cur.textContent = fmtKcal(total);
-  cur.style.color = over ? 'var(--c1)' : 'var(--text)';
+  cur.style.color = over ? '#c0392b' : 'var(--ink)';
   const fill = document.getElementById('cal-fill');
   fill.style.width = pct+'%';
   fill.classList.toggle('over', over);
-  const colorMap={meal:'var(--c1)',supplement:'var(--c3)'};
+  const colorMap={meal:'var(--action)',supplement:'var(--c3)'};
   document.getElementById('cal-detail').innerHTML = checkedFood.map(i=>`
     <div class="cal-detail-item">
       <span class="cal-detail-dot" style="background:${colorMap[i.cat]||'var(--text3)'}"></span>
@@ -1077,7 +1109,7 @@ function buildSection(id,label,items,checks,memos,imgs,freeMeals,ro){
           <input class="free-meal-input" type="text" placeholder="오늘 먹은 메뉴" value="${escHtml(freeMeal)}" oninput="saveFreeMeal('${item.id}',this.value)">
         </div>`:''}
         ${isFree&&ro&&freeMeal?`<div class="todo-sub" style="margin-top:4px">${escHtml(freeMeal)}</div>`:''}
-        ${memo?`<div class="todo-memo-inline" onclick="event.stopPropagation();${ro?'':'openMemoSheet(\''+item.id+'\')'}"}>메모: ${escHtml(memo)}</div>`:''}
+        ${memo?`<div class="todo-memo-inline" onclick="event.stopPropagation();${ro?'':'openMemoSheet(\''+item.id+'\')'}">메모: ${escHtml(memo)}</div>`:''}
         ${itemImgs.length?`<div class="todo-thumb-row" onclick="event.stopPropagation()">
           ${itemImgs.map((src,i)=>`<img class="todo-thumb" src="${src}" alt="첨부" onclick="openImgViewer('${item.id}',${i})">`).join('')}
           ${!ro?`<button class="act-btn" onclick="triggerItemImg('${item.id}')"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1.5v9M1.5 6h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>`:''}
@@ -1098,7 +1130,9 @@ function scrollToSection(id,btn){
   btn.classList.add('active');
   const anchor=document.getElementById('anchor-'+id);
   if(anchor){
-    anchor.scrollIntoView({behavior:'smooth', block:'start'});
+    const tabH=document.getElementById('time-tabs-wrap')?.offsetHeight||56;
+    const top=anchor.getBoundingClientRect().top+window.scrollY-tabH-8;
+    window.scrollTo({top,behavior:'smooth'});
   }
 }
 
@@ -1138,7 +1172,7 @@ function openMemoSheet(id){
 }
 function renderMemoImgPreview(arr){
   document.getElementById('memo-img-preview').innerHTML=arr.map((src,i)=>
-    `<div style="position:relative"><img src="${src}" style="width:56px;height:56px;border-radius:10px;object-fit:cover;border:1px solid var(--border)">
+    `<div style="position:relative"><img src="${src}" style="width:56px;height:56px;border-radius:10px;object-fit:cover;border:1px solid var(--hairline)">
     <button onclick="removeMemoImg(${i})" style="position:absolute;top:-5px;right:-5px;width:18px;height:18px;border-radius:50%;background:var(--text3);border:none;color:#fff;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button></div>`
   ).join('');
 }
@@ -1178,7 +1212,7 @@ function handleItemImgSelect(e){
 }
 
 /* ── IMG VIEWER ── */
-function openImgViewer(id,idx){imgViewerItemId=id;imgViewerIdx=idx;renderImgViewer();document.getElementById('img-viewer-overlay').classList.add('open')}
+function openImgViewer(id,idx){imgViewerItemId=id;imgViewerIdx=idx;renderImgViewer();document.getElementById('img-viewer-overlay').classList.add('open');lockScroll();}
 function renderImgViewer(){
   const arr=(getImgs(selDateKey)[imgViewerItemId])||[];
   document.getElementById('img-viewer-img').src=arr[imgViewerIdx]||'';
@@ -1430,7 +1464,7 @@ function selectMonth(y,m){
 }
 
 /* ── REPORT ── */
-function openReportSheet(){renderReportContent();document.getElementById('report-overlay').classList.add('open')}
+function openReportSheet(){renderReportContent();document.getElementById('report-overlay').classList.add('open');lockScroll();}
 function renderReportContent(){
   const now=new Date();const dow=now.getDay();const mon=new Date(now);mon.setDate(now.getDate()-(dow===0?6:dow-1));
   const weekDates=Array.from({length:7},(_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return d});
@@ -1440,7 +1474,7 @@ function renderReportContent(){
     if(rec){wkCI++;wkSum+=pct;wkN++}
     return`<div class="wbar-wrap">
       <div class="wbar-pct">${pct?pct+'%':''}</div>
-      <div class="wbar-track"><div class="wbar-fill" style="height:${Math.round(pct*.52)}px;background:${pct===100?'#1253ED':'var(--c3)'}"></div></div>
+      <div class="wbar-track"><div class="wbar-fill" style="height:${Math.round(pct*.52)}px;background:var(--action)"></div></div>
       <div class="wbar-name">${DAYS[d.getDay()]}</div></div>`;
   }).join('');
   const wt=curWt();
@@ -1476,7 +1510,7 @@ function renderReportContent(){
     </div></div>
     <div class="rpt-card"><div class="rpt-section-title">체중 기록</div>${wtLog}</div>`;
 }
-function calcStreak(r){let s=0;const d=new Date();while(true){const k=dateKey(d);if(!r[k]||r[k].pct<50)break;s++;d.setDate(d.getDate()-1)}return s}
+function calcStreak(r){let s=0;const d=new Date();while(s<=365){const k=dateKey(d);if(!r[k]||r[k].pct<50)break;s++;d.setDate(d.getDate()-1)}return s}
 function calcBestStreak(r){const keys=Object.keys(r).sort();let best=0,cur=0;for(let i=0;i<keys.length;i++){if(r[keys[i]].pct>=50){if(i>0){const diff=(new Date(keys[i])-new Date(keys[i-1]))/86400000;if(diff>1)cur=0}cur++;best=Math.max(best,cur);}else cur=0;}return best}
 
 /* ── CONFIRM SHEET ── */
@@ -1500,6 +1534,16 @@ function closeBg(e,id){if(e.target===document.getElementById(id)){closeSheet(id)
 
 /* ── TOAST ── */
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+
+/* ── DATE NAVIGATION ── */
+function navigateDate(dir){
+  const d=new Date(selDate);
+  d.setDate(d.getDate()+dir);
+  selectDate(dateKey(d));
+  const flashId=dir<0?'flash-left':'flash-right';
+  const el=document.getElementById(flashId);
+  if(el){el.classList.add('show');setTimeout(()=>el.classList.remove('show'),150);}
+}
 
 /* ── INIT ── */
 buildCatalogUI();
@@ -1528,5 +1572,11 @@ renderCalHeader();
   if(items.length&&done===items.length)wasComplete=true;
 })();
 </script>
+
+<!-- EDGE TOUCH ZONES -->
+<div class="edge-zone edge-zone-left" onclick="navigateDate(-1)"></div>
+<div class="edge-zone edge-zone-right" onclick="navigateDate(1)"></div>
+<div class="edge-flash edge-flash-left" id="flash-left"></div>
+<div class="edge-flash edge-flash-right" id="flash-right"></div>
 </body>
 </html>
