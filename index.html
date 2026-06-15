@@ -10,32 +10,6 @@
 <title>냉이랑 루틴</title>
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
-/* ── NATIVE APP PROTOCOL OPTIMIZATION ── */
-* {
-  -webkit-touch-callout: none; /* iOS Safari long-press menu disable */
-  -webkit-user-select: none;   /* Safari copy/paste popup disable */
-  user-select: none;           /* Standard selection disable */
-}
-
-/* Allow input and textareas to behave normally so user can still type */
-input, textarea {
-  -webkit-user-select: text;
-  user-select: text;
-}
-
-body {
-  overscroll-behavior: none;   /* Disable browser elastic pull-down refresh/bounce */
-  position: relative;
-}
-
-/* Optimize scrolling container for the app content area if needed */
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
-
 :root{
   /* Apple Design System */
   --ink:#1d1d1f;
@@ -85,12 +59,7 @@ html, body {
 html{font-size:16px;scroll-behavior:smooth}
 body{
   font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Pretendard',sans-serif;
-  background-image: url('background_summer.gif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color:var(--ink);
+  background-image: url('background_summer.gif'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; color:var(--ink);
   min-height:100vh;max-width:430px;margin:0 auto;
   padding-bottom:120px;
 }
@@ -98,7 +67,37 @@ body{
 body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 
 /* HEADER — Apple SF Pro Display style */
-.page-header{padding:20px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between}
+
+.page-header {
+  margin: 16px 16px 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--r);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-header .date-big {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.page-header .date-big::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('surf_girl.png');
+  background-size: cover;
+  border-radius: 6px;
+  border: 1px solid var(--hairline);
+}
+
 .date-eye{font-size:12px;font-weight:400;color:var(--text3);letter-spacing:-0.12px;margin-bottom:2px}
 .date-big{font-size:28px;font-weight:600;color:var(--ink);line-height:1.14;letter-spacing:-0.28px}
 .header-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
@@ -115,7 +114,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .dtype-chip:active{transform:scale(0.95)}
 .dtype-chip svg{transition:transform .2s;flex-shrink:0}
 .dtype-chip.open svg{transform:rotate(180deg)}
-.dtype-menu{position:absolute;top:calc(100% + 6px);right:0;background:var(--surface-pearl);border:1px solid var(--hairline);border-radius:var(--r);overflow:hidden;display:none;box-shadow:0 4px 30px rgba(0,0,0,0.12);min-width:150px;z-index:9999}
+.dtype-menu{position:absolute;top:calc(100% + 6px);right:0;background:var(--surface-pearl);border:1px solid var(--hairline);border-radius:var(--r);overflow:hidden;display:none;box-shadow:0 4px 30px rgba(0,0,0,0.12);min-width:150px;z-index:99999 !important;}
 .dtype-menu.open{display:block;animation:fadeIn .15s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .dtype-item{padding:13px 16px;font-size:14px;font-weight:400;color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--divider);transition:background .12s;letter-spacing:-0.224px}
@@ -161,20 +160,20 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .friday-item .todo-badge{background:rgba(0,102,204,0.08) !important;color:var(--action) !important}
 
 /* TODO CARD */
-.todo-card{margin:0 16px;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--hairline);border-radius:var(--r);overflow:visible;box-shadow:var(--shadow-lg);}
+.todo-card{margin:0 16px;background:var(--canvas);border:1px solid var(--hairline);border-radius:32px;overflow:visible}
 
 /* TIME TABS — pill */
-.time-tabs-wrap{padding:10px 12px;border-bottom:1px solid var(--divider);background:var(--canvas);border-radius:var(--r) var(--r) 0 0;position:sticky;top:0;z-index:20;transition:box-shadow .2s}
+.time-tabs-wrap{padding:10px 12px;border-bottom:1px solid var(--divider);background:var(--canvas);border-radius:32px 32px 0 0;position:sticky;top:0;z-index:20;transition:box-shadow .2s}
 .time-tabs-wrap.stuck{box-shadow:0 1px 0 var(--hairline)}
 .time-tabs{display:flex;gap:4px;background:var(--parchment);border-radius:99px;padding:3px}
 .time-tab{flex:1;padding:7px 0;font-size:12px;font-weight:400;color:var(--text3);background:none;border:none;cursor:pointer;font-family:inherit;border-radius:99px;transition:var(--tr);white-space:nowrap;letter-spacing:-0.12px}
-.time-tab.active{background:var(--canvas);color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
+.time-tab.active{background-image: url('background_summer.gif'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
 .time-tab:hover:not(.active){color:var(--text2)}
 
 /* TODO SECTIONS */
 .todo-sections{padding:0}
 .time-section{padding:0}
-.time-section-anchor{display:block;height:0;scroll-margin-top:130px;}
+.time-section-anchor{display:block;height:0;scroll-margin-top:140px !important;}
 .time-section-header{display:flex;align-items:center;padding:14px 16px 8px;font-size:14px;font-weight:600;color:var(--text2);letter-spacing:-0.224px}
 .time-section-header::after{content:'';flex:1;height:1px;background:var(--border);margin-left:10px}
 
@@ -210,9 +209,8 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .todo-actions{display:flex;flex-direction:row;align-items:center;gap:0;flex-shrink:0;margin-left:4px}
 .act-btn{width:28px;height:28px;border-radius:50%;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text4);transition:var(--tr);padding:0;flex-shrink:0}
 .act-btn:hover{background:var(--parchment);color:var(--text3)}
-.act-btn:active{transform:scale(0.95)}
-.card-add-btn:active{transform:scale(0.95)}
-.card-add-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 16px;background:none;border:none;border-top:1px solid var(--divider);color:var(--action);font-size:14px;font-weight:400;cursor:pointer;width:100%;font-family:inherit;transition:var(--tr);border-radius:0 0 var(--r) var(--r);letter-spacing:-0.224px}
+.act-btn:active{transform:scale(0.90)}
+.card-add-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 16px;background:none;border:none;border-top:1px solid var(--divider);color:var(--action);font-size:14px;font-weight:400;cursor:pointer;width:100%;font-family:inherit;transition:var(--tr);border-radius:0 0 32px 32px;letter-spacing:-0.224px}
 .card-add-btn:hover{background:var(--parchment)}
 
 /* CALENDAR */
@@ -248,7 +246,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .report-fab{position:fixed;bottom:28px;right:calc(50% - 215px + 20px);width:46px;height:46px;border-radius:50%;background:var(--action);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:50;transition:var(--tr)}
 .report-fab:hover{transform:scale(1.08)}
 .report-fab:focus{outline:3px solid var(--c4);outline-offset:2px}
-.report-fab:active{transform:scale(0.95)}
+.report-fab:active{transform:scale(0.94)}
 @media(max-width:430px){.report-fab{right:20px}}
 
 /* CONFETTI */
@@ -262,14 +260,14 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .success-bubble .s-text{font-size:18px;font-weight:700;color:var(--text)}
 
 /* ── COMMON BOTTOM SHEET ── */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.24);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);z-index:200;align-items:flex-end;justify-content:center}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.46);z-index:200;align-items:flex-end;justify-content:center}
 .overlay.open{display:flex;animation:overlayIn .18s ease}
 @keyframes overlayIn{from{opacity:0}to{opacity:1}}
 @keyframes sheetIn{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
 
 /* Sheet base */
 .sheet-wrap{
-  background:#fff;border-radius:var(--r) var(--r) 0 0;
+  background:#fff;border-radius:22px 22px 0 0;
   width:100%;max-width:430px;
   max-height:80vh;
   display:flex;flex-direction:column;
@@ -305,7 +303,7 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .time-select:hover{border-color:var(--text3)}
 .sheet-btn{width:100%;padding:14px;background:var(--action);color:#fff;border:none;border-radius:99px;font-size:17px;font-weight:300;font-family:inherit;cursor:pointer;transition:var(--tr);letter-spacing:0}
 .sheet-btn:hover{opacity:0.88}
-.sheet-btn:active{transform:scale(0.95)}
+.sheet-btn:active{transform:scale(0.98)}
 .sheet-btn.secondary{background:var(--parchment);color:var(--ink);border:1px solid var(--hairline)}
 .sheet-btn.secondary:hover{background:var(--bg3);border-color:var(--chip)}
 .sheet-btn+.sheet-btn{margin-top:8px}
@@ -392,109 +390,11 @@ body.sheet-open{overflow:hidden;position:fixed;width:100%;max-width:430px}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;font-size:14px;font-weight:400;padding:10px 20px;border-radius:99px;z-index:400;transition:transform .28s cubic-bezier(0.4,0,0.2,1);white-space:nowrap;font-family:inherit;letter-spacing:-0.224px}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .empty-state{text-align:center;padding:28px 20px;color:var(--text3);font-size:13px;line-height:1.9}
-
-/* ── THREE HEADER OPTIONS STYLING ── */
-.header-switcher {
-  margin: 10px 16px 4px;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 99px;
-  padding: 2px;
-  display: flex;
-  gap: 2px;
-  border: 1px solid var(--hairline);
-  z-index: 100;
-  position: relative;
-}
-.switcher-btn {
-  flex: 1;
-  border: none;
-  background: none;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text3);
-  padding: 6px 0;
-  border-radius: 99px;
-  cursor: pointer;
-  transition: var(--tr);
-  font-family: inherit;
-}
-.switcher-btn.active {
-  background: var(--action);
-  color: #ffffff;
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-}
-
-/* Option 1: Frosted Glass Capsule Badge + Mini Icon */
-.page-header.hdr-opt-1 {
-  margin: 16px 16px 12px;
-  padding: 14px 16px;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: var(--r);
-  border: 1px solid var(--hairline);
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-}
-.page-header.hdr-opt-1 .date-big {
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-/* Mini surf icon injection rule */
-.page-header.hdr-opt-1 .date-big::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background-image: url('surf_girl.png');
-  background-size: cover;
-  border-radius: 6px;
-  border: 1px solid var(--hairline);
-}
-
-/* Option 2: Trendy Typography Only (Transparent & Action Blue) */
-.page-header.hdr-opt-2 {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 24px 20px 14px;
-}
-.page-header.hdr-opt-2 .date-big {
-  color: var(--action);
-  font-size: 32px;
-  letter-spacing: -0.5px;
-  font-weight: 700;
-  text-shadow: 0 1px 2px rgba(255,255,255,0.6);
-}
-
-/* Option 3: Premium Gradient Fade Overlay */
-.page-header.hdr-opt-3 {
-  background: linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0) 100%);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  padding: 28px 20px 20px;
-  border: none;
-  box-shadow: none;
-}
-.page-header.hdr-opt-3 .date-big {
-  font-size: 26px;
-  color: var(--ink);
-}
-
 </style>
 </head>
 <body>
 
-
-
-
-<div class="page-header hdr-opt-1" id="main-page-header">
+<div class="page-header">
   <div>
     <div class="date-eye" id="hdr-eye"></div>
     <div class="date-big" id="hdr-date"></div>
@@ -1197,7 +1097,9 @@ function scrollToSection(id,btn){
   document.querySelectorAll('.time-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
   const anchor=document.getElementById('anchor-'+id);
-  if(anchor)window.scrollTo({top:anchor.getBoundingClientRect().top+window.scrollY-90,behavior:'smooth'});
+  if(anchor){
+    anchor.scrollIntoView({behavior:'smooth', block:'start'});
+  }
 }
 
 function toggleCheck(id){
@@ -1625,9 +1527,6 @@ renderCalHeader();
   const done=items.filter(i=>checks[i.id]).length;
   if(items.length&&done===items.length)wasComplete=true;
 })();
-
-
-
 </script>
 </body>
 </html>
